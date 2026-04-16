@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign Up</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #218838;
+}
+
+</style>
+</head>
+<body>
+
+      <center>
+    <header>
+        <img src="photo/title logo/f2d_logo.png" alt="Logo">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Sign Up for an account</h1>
+        <p>Please enter your details to create an account.</p>
+        
+    </header>
+    </center>
+
+<div class="container">
+<h2>Sign Up</h2>
+
+<input type="text" id="username" placeholder="Username"><br>
+<input type="email" id="email" placeholder="Email"><br>
+<input type="password" id="password" placeholder="Password"><br>
+
+<button onclick="signup()">Sign Up</button>
+
+<p>Already have account? <a href="login.html">Login</a></p>
+</div>
+
+<script>
+function signup(){
+
+let username=document.getElementById("username").value;
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
+
+let user={
+username:username,
+email:email,
+password:password
+};
+
+localStorage.setItem("user",JSON.stringify(user));
+
+alert("Signup successful!");
+window.location="login.html";
+}
+</script>
+
+</body>
+</html>

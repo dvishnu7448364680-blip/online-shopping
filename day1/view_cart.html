@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Fresh2day</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="fresh22.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .cart-wrapper {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .cart-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #28a745;
+            padding-bottom: 15px;
+        }
+
+        .cart-header h1 {
+            color: #28a745;
+            margin: 0;
+        }
+
+        .cart-items-section {
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0 0 5px 0;
+        }
+
+        .item-weight {
+            font-size: 13px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .item-price {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .item-total {
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .cart-item img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-right: 15px;
+        }
+
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .qty-btn:hover {
+            background-color: #218838;
+        }
+
+        .qty-display {
+            min-width: 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #666;
+            padding: 50px 20px;
+            font-size: 18px;
+        }
+
+        .empty-cart-btn {
+            margin-top: 20px;
+        }
+
+        .empty-cart-btn a {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .empty-cart-btn a:hover {
+            background-color: #218838;
+        }
+
+        .cart-summary {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #28a745;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .summary-row.total {
+            font-size: 20px;
+            font-weight: bold;
+            border-top: 2px solid #28a745;
+            padding-top: 10px;
+            color: #28a745;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .btn-checkout {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-checkout:hover {
+            background-color: #218838;
+        }
+
+        .btn-continue {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-continue:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .cart-wrapper {
+                margin: 15px;
+                padding: 15px;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .qty-controls {
+                margin-top: 10px;
+            }
+
+            .cart-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sticky">
+        <marquee onmouseover="this.stop()" onmouseout="this.start()">Right from Fresh Fruits & Vegetables, Rice & Dals, Spices & Seasonings to Packaged products, Bakery Products, Beverages – We have it all !</a></marquee>
+        <header>
+            <a href="fresh2day.html"><img src="photo/title logo/f2d_logo.png" alt="logo" width="200px" height="70px"></a>
+            <a class="location" href=""><i class="fa-solid fa-location-dot"></i> Choose your location</a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="search" placeholder="What are you looking for?">
+                <button>Search</button>
+            </div>
+            <a href=""><i class="fa-regular fa-circle-user">Login</i></a>
+            <a href="view_cart.html"><i class="fa-solid fa-cart-shopping"> </i><sup><span class="cart">0</span></sup></a>
+        </header>
+        <hr>
+        <ul class="nav">
+            <li><a href="fresh2day.html">Home</a></li>
+            <li class="dropdown"><a href="">Shop by Category</a>
+               <ul class="dropdown-content">
+                <li class="dropdown-mini"><a href="fresh_fruits.html">Fresh Fruits</a>
+                <ul class="sub-nav">
+                     <li><a href="fresh_fruits - Fruits.html">Fruits</a></li>
+                        <li><a href="FRESH_FRUITS_Regular_Fruits.html">Regular Fruits</a></li>
+                        <li><a href="Fresh-Fruits_cut_fruits_salad.html">Cut Fruits & Salad</a></li>
+                        <li><a href="fresh_fruits - Fruits.html">Exotic Fruits</a></li>
+                        <li><a href="fresh-fruits-seasonal_Fruits.html">Seasonal Fruits</a></li>
+                        <li><a href="fresh-fruits-Premium_Fruits.html">Premium Fruits</a></li>
+                </ul>
+                </li>
+                <li class="dropdown-mini"><a href="fresh_vegetables.html">Fresh Vegetables</a>
+                <ul class="sub-nav">
+                    <li><a href="Fresh-Vegetables_Regular-Vegetables.html">Regular Vegetables</a></li>
+                        <li><a href="fresh_vegetables.html">Cut & Peeled Vegetables</a></li>
+                        <li><a href="Fresh-Vegetables-Seasonal-Vegetables.html">Seasonal Vegetables</a></li>
+                        <li><a href="Fresh Vegetables-Leafy.html">Leafy</a></li>
+                        <li><a href="Fresh Vegetables-Sprouts.html">Sprouts</a></li>
+                </ul>
+                </li>
+                <li class="dropdown-mini"><a href="Exotic_Fruits_&_Veg.html">Exotic Fruits & Veg</a>
+                    <ul class="sub-nav">
+                        <li><a href="Exotic-Fruits&Veg-fruits.html">Fruits</a></li>
+                        <li><a href="Exotic-Fruits&Veg-Vegetables.html">Vegetables</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="Bread,Dairy&Eggs.html">Bread, Dairy & Eggs</a>
+                    <ul class="sub-nav">
+                        <li><a href="Bread,Dairy&Eggs-Bread&Buns.html">Bread & Buns</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Butter&Cream.html">Butter & Cream</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Curd&Yogurts.html">Curd & Yogurts</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Eggs.html">Eggs</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Milk.html">Milk</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Cheese.html">Cheese</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Paneer.html">Paneer</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="atta&flour.html">Atta & Flours</a>
+                    <ul class="sub-nav">
+                        <li><a href="Atta&Flour-Atta.html">Atta</a></li>
+                        <li><a href="Atta&Flour-flour.html">Flours</a></li>
+                        <li><a href="Atta&flour-Rava & Sooji.html">Rava & Sooji</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="masala&spices.html">Masala & Spices</a>
+                    <ul class="sub-nav">
+                        <li><a href="masala&spices_masala.html">Masala</a></li>
+                        <li><a href="masala&spices-spices.html">Spices</a></li>
+                        <li><a href="masala&spices-Cooking_Paste.html">Cooking Paste</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="oil&ghee.html">Oils & Ghee</a>
+                    <ul class="sub-nav">
+                        <li><a href="oil&ghee-f2d.html">F2D Oil</a></li>
+                        <li><a href="oil&ghee-ghee.html">Ghee</a></li>
+                        <li><a href="oil&ghee-edibleOil.html">Edible Oil</a></li>
+                        <li><a href="oil&ghee-oil.html">Oil</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="rice&dals.html">Rice & Dals</a>
+                    <ul class="sub-nav">
+                        <li><a href="rice&dals-F2D-Pulses&Millets.html">F2D Pulses & Millets</a></li>
+                        <li><a href="rice&dals-f2d-rice.html">F2D Rice</a></li>
+                        <li><a href="rice&dals-pulses&Millets.html">Pulses & Millets</a></li>
+                        <li><a href="rice&dals-rice.html">Rice</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="sugar&salt.html">Sugar & Salt</a>
+                    <ul class="sub-nav">
+                        <li><a href="sugar&salt-sugar&Jaggery.html">Sugar & Jaggery</a></li>
+                        <li><a href="sugar&salt-salt.html">Salt</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="tea,coffee&health.html">Tea, Coffee & Health Drinks</a>
+                    <ul class="sub-nav">
+                        <li><a href="tea,coffee&health-tea.html">Tea</a></li>
+                        <li><a href="tea,coffee&health-coffee.html">Coffee</a></li>
+                        <li><a href="tea,coffee&health-health.html">Health Drinks</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="dry_fruits.html">Dry Fruits</a>
+                    <ul class="sub-nav">
+                        <li><a href="dry_fruits-f2d-dry_fruits.html">F2D Dry Fruits</a></li>
+                        <li><a href="dry_fruaits-dates.html">Dates</a></li>
+                        <li><a href="dry_fruits-dry_fruits.html">Dry Fruits</a></li>
+                        <li><a href="Dry_Fruits-OtherDryFruits.html">Other Dry Fruits</a></li>
+                    </ul>
+                    </li>
+
+           </ul>     
+        </li>
+        <li><a href="about_us.html">About Us</a></li>
+    </ul>
+    </div>
+
+    <br>
+
+    <p class="hf"><a href="fresh2day.html">HOME</a> <a href="">/</a> <a href="view_cart.html">YOUR CART</a></p>
+
+    <div class="cart-wrapper">
+        <div class="cart-header">
+            <h1>🛒 Your Shopping Cart</h1>
+        </div>
+
+        <div class="cart-items-section" id="cartItemsDisplay">
+            <!-- Cart items will be rendered here -->
+        </div>
+
+        <div class="cart-summary" id="cartSummary">
+            <!-- Summary will be rendered here -->
+        </div>
+
+        <div class="cart-actions">
+            <a href="fresh2day.html" class="btn btn-continue">Continue Shopping</a>
+            <button class="btn btn-checkout" onclick="checkout()"><a href="checkout.html">Proceed to Checkout</a></button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="logo">
+                    <img src="photo/title logo/f2d_logo.png" alt="Fresh2day Logo">
+                </div>
+                <p class="description">
+                    Fresh2Day is Chennai's best food and grocery store. With over <strong>200 handpicked products</strong> in the catalogue, you will find everything you are looking for.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Our Story</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p class="address">
+                    Fresh2day, T Nagar,<br>
+                    Chennai,<br>
+                    Tamilnadu - 600017
+                </p>
+                <div class="contact-info">
+                    <p><i class="far fa-envelope"></i> info@fresh2day.com</p>
+                    <p><i class="fas fa-phone"></i> 9091600916</p>
+                    <p><i class="fab fa-whatsapp"></i> 9091600916</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Policies</h3>
+                <ul>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div class="end">
+        <p>Copyright © 2024 Fresh2Day All rights reserved..</p>
+        <div>
+            <a href="https://play.google.com/store/apps/details?id=com.rodeodigital.fresh2daymas"><img src="about-photo/google-play.png" alt="" width="150px" height="50px"></a>
+            <a href="https://apps.apple.com/in/app/fresh2day/id1628106857"><img src="about-photo/app-store.png" alt="" width="150px" height="50px"></a>
+        </div>
+        <p>Powered by Rodeo Digital.</p>
+    </div>
+
+      
+    <script src="scriptcart.js"></script>
+</body>
+</html>

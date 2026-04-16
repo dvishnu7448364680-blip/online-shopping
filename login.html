@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.container {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: rgb(196, 210, 174);
+}
+
+
+
+
+</style>
+</head>
+<body>
+    <center>
+    <header>
+        <img src="photo/title logo/f2d_logo.png" alt="Logo">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Login your account</h1>
+        <p>Please enter your email and password to log in.</p>
+        
+    </header>
+    </center>
+
+<div class="container">
+<h2>Login</h2>
+
+<input type="email" id="email" placeholder="Email"><br>
+<input type="password" id="password" placeholder="Password"><br>
+
+<button onclick="login()">Login</button>
+
+<p>Don't have account? <a href="singUp.html">Sign Up</a></p>
+</div>
+
+<script>
+function login(){
+
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
+
+let user=JSON.parse(localStorage.getItem("user"));
+
+if(email===user.email && password===user.password){
+
+alert("Login Successful");
+window.location="fresh2day.html";
+
+}else{
+alert("Invalid login details");
+}
+
+}
+</script>
+
+</body>
+</html>

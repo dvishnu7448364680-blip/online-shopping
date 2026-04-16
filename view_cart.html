@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Fresh2day</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="fresh22.css">
+    <style>
+    #cartItems {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    #cartItems p {
+        margin-bottom: 10px;
+    }
+    #cartItems img {
+        max-width: 100px;
+        height: auto;
+    }
+    
+     #cartItems button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    #cartItems button:hover {
+            background-color: #218838;
+        }
+        
+    #cartItems hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 10px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="sticky">
+        <marquee onmouseover="this.stop()" onmouseout="this.start()">Right from Fresh Fruits & Vegetables, Rice & Dals, Spices & Seasonings to Packaged products, Bakery Products, Beverages – We have it all !</a></marquee>
+        <header>
+            <a href="index.html"><img src="photo/title logo/f2d_logo.png" alt="logo" width="200px" height="70px"></a>
+            <a class="location" href=""><i class="fa-solid fa-location-dot"></i> Choose your location</a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="search" placeholder="What are you looking for?">
+                <button>Search</button>
+            </div>
+            <a href="login.html"><i class="fa-regular fa-circle-user">Logout</i></a>
+            <a href="view_cart.html"><i class="fa-solid fa-cart-shopping"> </i><sup><span class="cart">0</span></sup></a>
+        </header>
+        <hr>
+        <ul class="nav">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown"><a href="">Shop by Category</a>
+               <ul class="dropdown-content">
+                <li class="dropdown-mini"><a href="fresh_fruits.html">Fresh Fruits</a>
+                <ul class="sub-nav">
+                     <li><a href="fresh_fruits - Fruits.html">Fruits</a></li>
+                        <li><a href="FRESH_FRUITS_Regular_Fruits.html">Regular Fruits</a></li>
+                        <li><a href="Fresh-Fruits_cut_fruits_salad.html">Cut Fruits & Salad</a></li>
+                        <li><a href="fresh_fruits - Fruits.html">Exotic Fruits</a></li>
+                        <li><a href="fresh-fruits-seasonal_Fruits.html">Seasonal Fruits</a></li>
+                        <li><a href="fresh-fruits-Premium_Fruits.html">Premium Fruits</a></li>
+                </ul>
+                </li>
+                <li class="dropdown-mini"><a href="fresh_vegetables.html">Fresh Vegetables</a>
+                <ul class="sub-nav">
+                    <li><a href="Fresh-Vegetables_Regular-Vegetables.html">Regular Vegetables</a></li>
+                        <li><a href="fresh_vegetables.html">Cut & Peeled Vegetables</a></li>
+                        <li><a href="Fresh-Vegetables-Seasonal-Vegetables.html">Seasonal Vegetables</a></li>
+                        <li><a href="Fresh Vegetables-Leafy.html">Leafy</a></li>
+                        <li><a href="Fresh Vegetables-Sprouts.html">Sprouts</a></li>
+                </ul>
+                </li>
+                <li class="dropdown-mini"><a href="Exotic_Fruits_&_Veg.html">Exotic Fruits & Veg</a>
+                    <ul class="sub-nav">
+                        <li><a href="Exotic-Fruits&Veg-fruits.html">Fruits</a></li>
+                        <li><a href="Exotic-Fruits&Veg-Vegetables.html">Vegetables</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="Bread,Dairy&Eggs.html">Bread, Dairy & Eggs</a>
+                    <ul class="sub-nav">
+                        <li><a href="Bread,Dairy&Eggs-Bread&Buns.html">Bread & Buns</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Butter&Cream.html">Butter & Cream</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Curd&Yogurts.html">Curd & Yogurts</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Eggs.html">Eggs</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Milk.html">Milk</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Cheese.html">Cheese</a></li>
+                        <li><a href="Bread,Dairy&Eggs-Paneer.html">Paneer</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="atta&flour.html">Atta & Flours</a>
+                    <ul class="sub-nav">
+                        <li><a href="Atta&Flour-Atta.html">Atta</a></li>
+                        <li><a href="Atta&Flour-flour.html">Flours</a></li>
+                        <li><a href="Atta&flour-Rava & Sooji.html">Rava & Sooji</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="masala&spices.html">Masala & Spices</a>
+                    <ul class="sub-nav">
+                        <li><a href="masala&spices_masala.html">Masala</a></li>
+                        <li><a href="masala&spices-spices.html">Spices</a></li>
+                        <li><a href="masala&spices-Cooking_Paste.html">Cooking Paste</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="oil&ghee.html">Oils & Ghee</a>
+                    <ul class="sub-nav">
+                        <li><a href="oil&ghee-f2d.html">F2D Oil</a></li>
+                        <li><a href="oil&ghee-ghee.html">Ghee</a></li>
+                        <li><a href="oil&ghee-edibleOil.html">Edible Oil</a></li>
+                        <li><a href="oil&ghee-oil.html">Oil</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="rice&dals.html">Rice & Dals</a>
+                    <ul class="sub-nav">
+                        <li><a href="rice&dals-F2D-Pulses&Millets.html">F2D Pulses & Millets</a></li>
+                        <li><a href="rice&dals-f2d-rice.html">F2D Rice</a></li>
+                        <li><a href="rice&dals-pulses&Millets.html">Pulses & Millets</a></li>
+                        <li><a href="rice&dals-rice.html">Rice</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="sugar&salt.html">Sugar & Salt</a>
+                    <ul class="sub-nav">
+                        <li><a href="sugar&salt-sugar&Jaggery.html">Sugar & Jaggery</a></li>
+                        <li><a href="sugar&salt-salt.html">Salt</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="tea,coffee&health.html">Tea, Coffee & Health Drinks</a>
+                    <ul class="sub-nav">
+                        <li><a href="tea,coffee&health-tea.html">Tea</a></li>
+                        <li><a href="tea,coffee&health-coffee.html">Coffee</a></li>
+                        <li><a href="tea,coffee&health-health.html">Health Drinks</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown-mini"><a href="dry_fruits.html">Dry Fruits</a>
+                    <ul class="sub-nav">
+                        <li><a href="dry_fruits-f2d-dry_fruits.html">F2D Dry Fruits</a></li>
+                        <li><a href="dry_fruaits-dates.html">Dates</a></li>
+                        <li><a href="dry_fruits-dry_fruits.html">Dry Fruits</a></li>
+                        <li><a href="Dry_Fruits-OtherDryFruits.html">Other Dry Fruits</a></li>
+                    </ul>
+                    </li>
+
+           </ul>     
+        </li>
+        <li><a href="about_us.html">About Us</a></li>
+    </ul>
+    </div>
+
+    <br>
+
+    <p class="hf"><a href="index.html">HOME</a> <a href="">/</a> <a href="view_cart.html">YOUR CART</a></p>
+
+    <h2>My Cart</h2>
+
+<div id="cartItems"></div>
+
+<script>
+
+let cart= JSON.parse(localStorage.getItem("cart")) || [];
+let container = document.getElementById("cartItems");
+
+cart.forEach(function(item,index){
+    const div = document.createElement("div")
+    div.innerHTML=`<p>Name : ${item.name}</p>
+<img src="${item.image}" alt="${item.name}" width="100" height="100">
+<p>Weight : ${item.grams}</p>
+<p>Price : ₹${item.price}</p>
+<p>Quantity : ${item.quantity}</p>
+
+<button onclick="increaseQuantity(${index})">+</button>
+<button onclick="decreaseQuantity(${index})">-</button>
+<button onclick="removeItem(${index})">Remove Item</button>
+<hr>`;
+container.appendChild(div);
+})
+  let total = cart.reduce((sum, item) => sum + (parseFloat(item.price.replace('₹', '')) * item.quantity), 0);
+    let totalDiv = document.createElement("div");
+    totalDiv.innerHTML = `<h3>Total: ₹${total}</h3>`;
+    container.appendChild(totalDiv);
+
+// Add buttons outside the loop
+let buttonDiv = document.createElement("div");
+buttonDiv.innerHTML = `
+<button onclick="clearCart()">Clear Cart</button>
+<button onclick="checkout()">Checkout</button>
+`;
+container.appendChild(buttonDiv);
+
+function increaseQuantity(index){
+    cart[index].quantity++;
+    localStorage.setItem("cart", JSON.stringify(cart));
+    location.reload();
+}
+
+function decreaseQuantity(index){
+    if(cart[index].quantity > 1){
+        cart[index].quantity--;
+    } else {
+        cart.splice(index, 1);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    location.reload();
+}
+
+function removeItem(index){
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    location.reload();
+}
+
+function clearCart(){
+    localStorage.removeItem("cart");
+    location.reload();
+}
+function checkout(){
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders = orders.concat(cart);
+    localStorage.setItem("orders", JSON.stringify(orders));
+    localStorage.removeItem("cart");
+    window.location.href = "order_success.html";
+}
+
+
+</script>
+
+
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="logo">
+                    <img src="photo/title logo/f2d_logo.png" alt="Fresh2day Logo">
+                </div>
+                <p class="description">
+                    Fresh2Day is Chennai's best food and grocery store. With over <strong>200 handpicked products</strong> in the catalogue, you will find everything you are looking for.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Our Story</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p class="address">
+                    Fresh2day, T Nagar,<br>
+                    Chennai,<br>
+                    Tamilnadu - 600017
+                </p>
+                <div class="contact-info">
+                    <p><i class="far fa-envelope"></i> info@fresh2day.com</p>
+                    <p><i class="fas fa-phone"></i> 9091600916</p>
+                    <p><i class="fab fa-whatsapp"></i> 9091600916</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Policies</h3>
+                <ul>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div class="end">
+        <p>Copyright © 2024 Fresh2Day All rights reserved..</p>
+        <div>
+            <a href="https://play.google.com/store/apps/details?id=com.rodeodigital.fresh2daymas"><img src="about-photo/google-play.png" alt="" width="150px" height="50px"></a>
+            <a href="https://apps.apple.com/in/app/fresh2day/id1628106857"><img src="about-photo/app-store.png" alt="" width="150px" height="50px"></a>
+        </div>
+        <p>Powered by Rodeo Digital.</p>
+    </div>
+
+      
+    <script src="scriptcart.js"></script>
+</body>
+</html>

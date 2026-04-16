@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh2day Footer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.footer {
+    background: linear-gradient(to bottom, #ffffff 0%, #e8f5e8 100%);
+    padding: 40px 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #7cb342;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #7cb342;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    top: 50px;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background-color: rgb(227, 14, 14);
+}
+
+.social-icon i {
+    font-size: 18px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-column h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.logo img {
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.description strong {
+    color: #7cb342;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #7cb342;
+}
+
+.address {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-info i {
+    color: #7cb342;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .description {
+        text-align: left;
+    }
+}
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="logo">
+                    <img src="logo.png" alt="Fresh2day Logo">
+                </div>
+                <p class="description">
+                    Fresh2Day is Chennai's best food and grocery store. With over <strong>200 handpicked products</strong> in the catalogue, you will find everything you are looking for.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Our Story</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p class="address">
+                    Fresh2day, T Nagar,<br>
+                    Chennai,<br>
+                    Tamilnadu - 600017
+                </p>
+                <div class="contact-info">
+                    <p><i class="far fa-envelope"></i> info@fresh2day.com</p>
+                    <p><i class="fas fa-phone"></i> 9091600916</p>
+                    <p><i class="fab fa-whatsapp"></i> 9091600916</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Policies</h3>
+                <ul>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+      <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <button class="float-btn scroll-top">
+          <a style="color: white;" href="#visual">  <i class="fas fa-arrow-up"></i></a>
+        </button>
+        <button class="float-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+    <script src="scriptcart.js"></script>
+</body>
+</html>
